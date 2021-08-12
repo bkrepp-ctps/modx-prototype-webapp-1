@@ -17,7 +17,7 @@ d3.json("geojson/taz_all_modes.geojson").then(
 	function generateMap(tazesFeatureCollection) {	
 		// Define SVG container ('viewport')
 		var width = 960,
-			height = 500;
+			height = 620;
 			
 		var svgContainer = d3.select("body").append("svg")
 			.attr("width", width)
@@ -32,7 +32,7 @@ d3.json("geojson/taz_all_modes.geojson").then(
 			.parallels([41 + 43 / 60, 42 + 41 / 60])
 			.rotate([71 + 30 / 60, -41 ])
 			.scale([13000])
-			.translate([500,560]);
+			.translate([500,640]);
 				
 		// Define geo-path generator function
 		var geoPath = d3.geoPath().projection(projection);
@@ -45,7 +45,7 @@ d3.json("geojson/taz_all_modes.geojson").then(
 		// Create SVG <path> for each town
 		var svgTazes = svgContainer
 			.selectAll("path")
-			.data(tazezFeatureCollection.features)
+			.data(tazesFeatureCollection.features)
 			.enter()
 			.append("path")
 				.attr("d", function(d, i) { return geoPath(d); })

@@ -50,13 +50,7 @@ d3.json("geojson/taz_all_modes.geojson").then(
 		var palette = d3.scaleThreshold()
 						.domain(total_breaks)
 						.range(color_palette);
-		
-		// Vestigial scale
-		// Define choropleth color palette: 6-class ColorBrewer yellow/orange/brown
-		var vestigial_palette = d3.scaleThreshold()
-						.domain([250, 500, 1000, 2000, 4000, 8000, Infinity])
-						.range(colorbrewer.YlOrBr[7]);
-			
+						
 		// Create SVG <path> for each town
 		var svgTazes = svgContainer
 			.selectAll("path")
@@ -68,7 +62,6 @@ d3.json("geojson/taz_all_modes.geojson").then(
 				.style("stroke-width", "0.5px")
 				.style("fill", function(d, i) { 
 					return palette(d.properties.total_trips);
-					// return (i %2 == 0) ? "blue" : "red";
 					})
 				.append("title")
 					.text(function(d, i) { return d.properties.town_state + '\ntotal demand: ' + d.properties.total_trips.toFixed(2); });

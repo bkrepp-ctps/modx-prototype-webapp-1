@@ -72,7 +72,7 @@ d3.json("geojson/taz_all_modes.geojson").then(
 					})
 				.append("title")
 					.text(function(d, i) { return d.properties.town_state + '\ntotal demand: ' + d.properties.total_trips.toFixed(2); });
-				
+/*
 		// Generate legend
 		// Create data array ({color, text} pairs) for legend
 		var i,
@@ -83,7 +83,6 @@ d3.json("geojson/taz_all_modes.geojson").then(
 																	 : '>= ' + palette.domain()[i-1].toString() } );
 		}	
 			
-/*
 		svgContainer.selectAll("rect")
 			.data(legendData)
 			.enter()

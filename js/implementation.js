@@ -49,6 +49,7 @@ function initialize() {
 		truck_breaks = [0.0, 676.35846, 1617.0322, 4340.8345, 10960.693, 20621.398];
 	
 	// 5-step color scale
+	// Reference: https://colorbrewer2.org/#type=diverging&scheme=Spectral&n=5 (inverted)
 	var color_palette = [ '#2b83ba', 	// blue
 	                      '#abdda4',	// light green
 						  '#ffffbf',	// tan-yellow
@@ -99,7 +100,17 @@ function initialize() {
 								return palette(d.properties.total_trips);
 								})
 							.append("title")
-								.text(function(d, i) { return d.properties.town_state + '\ntotal demand: ' + d.properties.total_trips.toFixed(2); });
+								.text(function(d, i) { 
+										var retval;
+										retval = 'TAZ ' + d.properties.id + '\n';
+										retval += d.properties.town_state + '\n';
+										retval += 'total demand: ' + d.properties.total_trips.toFixed(2) + '\n';
+										retval += 'auto: ' + d.properties.total_auto.toFixed(2) + '\n';
+										retval += 'transit: ' + d.properties.total_transit.toFixed(2) + '\n';
+										retval += 'non-motorized: ' + d.properties.total_nm.toFixed(2) + '\n';
+										retval += 'truck: ' + d.properties.total_truck.toFixed(2) + '\n';
+										return retval;
+									  });
 			
 	/*
 		// HERE: TBD CODE TO GENERATE LEGEND

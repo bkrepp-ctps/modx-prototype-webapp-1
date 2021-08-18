@@ -49,7 +49,12 @@ function initialize() {
 		truck_breaks = [0.0, 676.35846, 1617.0322, 4340.8345, 10960.693, 20621.398];
 	
 	// 5-step color scale
-	var color_palette = [ '#d7191c', '#fdac61', '#ffffbf', '#abdda4', '#2b83ba' ];
+	var color_palette = [ '#2b83ba', 	// blue
+	                      '#abdda4',	// light green
+						  '#ffffbf',	// tan-yellow
+						  '#fdac61',	// tan-orange
+						  '#d7191c', 	// red
+						];
 	
 	var palette = d3.scaleThreshold()
 					.domain(total_breaks)
